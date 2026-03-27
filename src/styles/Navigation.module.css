@@ -1,0 +1,25 @@
+.navBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(149, 135, 117);
+}
+
+.navLink {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-right: 32px;
+    text-decoration: none;
+    color: antiquewhite;
+}
+
+.navLink:hover {
+    text-decoration: underline;
+}

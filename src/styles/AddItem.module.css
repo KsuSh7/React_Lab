@@ -1,0 +1,29 @@
+.form {
+    display: grid;
+    place-content: center;
+    gap: 20px;
+    height: 100vh;
+}
+
+input {
+    width: 401px;
+    height: 25px;
+    border-radius: 10px;
+    border-width: 1px;
+    padding-left: 10px;
+}
+
+button {
+    height: 31px;
+    border-radius: 10px;
+    background-color: rgb(149, 135, 117);
+    color: antiquewhite;
+    border-width: 1px;
+}
+
+button:hover {
+    background-color: antiquewhite;
+    color: black;
+    border-width: 1px;
+    cursor: pointer;
+}
