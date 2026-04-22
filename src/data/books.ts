@@ -21,5 +21,12 @@ export const books: Book[] = [
     author: "Robert Martin",
     genre: "Programming",
     pages: 464
+  },
+  {
+    id: 4,
+    title: "The Secret History",
+    author: "Donna Tartt",
+    genre: "Modern classic",
+    pages: 629
   }
 ]

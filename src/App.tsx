@@ -8,28 +8,24 @@ import AddItem from "./pages/AddItem"
 import About from "./pages/About"
 import NotFound from "./pages/NotFound"
 import ClassItems from "./pages/ClassItems"
+import { ItemsProvider } from "./context/ItemsContext"
 
 function App() {
-  
-
   return (
-    <BrowserRouter>
-
-      <Navigation />
-
-      <Routes>
-
-        <Route path="/" element={<Home />} />
-        <Route path="/items" element={<Items />} />
-        <Route path="/items/:id" element={<ItemDetails />} />
-        <Route path="/add" element={<AddItem />} />
-        <Route path="/class/items" element={<ClassItems />} />
-        <Route path="/about" element={<About />} />
-        <Route path="*" element={<NotFound />} />
-
-      </Routes>
-
-    </BrowserRouter>
+    <ItemsProvider>
+      <BrowserRouter>
+        <Navigation />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/items" element={<Items />} />
+          <Route path="/items/:id" element={<ItemDetails />} />
+          <Route path="/add" element={<AddItem />} />
+          <Route path="/class/items" element={<ClassItems />} />
+          <Route path="/about" element={<About />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </ItemsProvider>
   )
 }
 

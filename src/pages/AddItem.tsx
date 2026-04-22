@@ -1,52 +1,42 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { ItemsContext } from "../context/ItemsContext"
 import styles from "../styles/AddItem.module.css";
 
 export default function AddItem() {
+  const { addItem } = useContext(ItemsContext);
 
-  const [title, setTitle] = useState("")
-  const [author, setAuthor] = useState("")
-  const [genre, setGenre] = useState("")
-  const [pages, setPages] = useState<number>(0)
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [genre, setGenre] = useState("");
+  const [pages, setPages] = useState<number>(0);
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    console.log({
+    addItem({
+      id: Date.now(),
       title,
       author,
       genre,
       pages
-    })
-  }
+    });
+
+    setTitle("");
+    setAuthor("");
+    setGenre("");
+    setPages(0);
+  };
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-    <h2>Add a book</h2>
-    <input
-        placeholder="Title"
-        onChange={(e) => setTitle(e.target.value)}
-    />
+      <h2>Add a book</h2>
 
-    <input
-        placeholder="Author"
-        onChange={(e) => setAuthor(e.target.value)}
-    />
+      <input placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
+      <input placeholder="Author" value={author} onChange={(e) => setAuthor(e.target.value)} />
+      <input placeholder="Genre" value={genre} onChange={(e) => setGenre(e.target.value)} />
+      <input type="number" placeholder="Pages" value={pages} onChange={(e) => setPages(Number(e.target.value))} />
 
-    <input
-        placeholder="Genre"
-        onChange={(e) => setGenre(e.target.value)}
-    />
-
-    <input
-        type="number"
-        placeholder="Pages"
-        onChange={(e) => setPages(Number(e.target.value))}
-    />
-
-    <button>Add Book</button>
-
+      <button type="submit">Add Book</button>
     </form>
-
-
-  )
+  );
 }
