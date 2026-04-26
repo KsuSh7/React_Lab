@@ -1,15 +1,14 @@
-import { useContext, useMemo, useState, useCallback } from "react";
-import { ItemsContext } from "../context/ItemsContext";
-import ItemCard from "../components/ItemCard.tsx";
+import { useMemo, useState } from "react";
+import ItemCard from "../components/ItemCard";
 import styles from "../styles/Items.module.css";
+import { useSelector } from "react-redux";
+import type { RootState } from "../store";
+
 
 export default function Items() {
-  const { items } = useContext(ItemsContext);
+  const items = useSelector((state: RootState) => state.items.items);
   const [search, setSearch] = useState("");
 
-  const handleSearch = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
-  }, []);
 
   const filtered = useMemo(() => {
     return items.filter(book =>
@@ -24,7 +23,7 @@ export default function Items() {
       <input
         placeholder="Search..."
         value={search}
-        onChange={handleSearch}
+        onChange={(e) => setSearch(e.target.value)}
       />
 
       <ul className={styles.list}>

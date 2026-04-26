@@ -8,11 +8,12 @@ import AddItem from "./pages/AddItem"
 import About from "./pages/About"
 import NotFound from "./pages/NotFound"
 import ClassItems from "./pages/ClassItems"
-import { ItemsProvider } from "./context/ItemsContext"
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 function App() {
   return (
-    <ItemsProvider>
+    <Provider store={store}>
       <BrowserRouter>
         <Navigation />
         <Routes>
@@ -25,7 +26,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
-    </ItemsProvider>
+    </Provider>
   )
 }
 

@@ -6,11 +6,36 @@
 
 .listItem {
     text-decoration: none;
-    color: black;
+    color: antiquewhite;
 }
 
 .listItem:hover {
     text-decoration: underline;
     color: black;
     cursor: pointer;
+}
+
+.listItemWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  background-color: rgb(149, 135, 117);
+  border-radius: 10px;
+  width: 501px;
+  margin-top: 5px;
+}
+
+.deleteBtn {
+  background: rgb(203, 179, 148);
+  border: none;
+  padding: 6px 10px;
+  color: rgb(175, 16, 16);
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.deleteBtn:hover {
+  background: #d93636;
+  color: antiquewhite;
 }

@@ -1,22 +1,50 @@
 import React from "react";
-import { ItemsContext } from "../context/ItemsContext";
-import type { Book } from "../types/Book.tsx";
+import { connect } from "react-redux";
+import type { RootState } from "../store";
+import type { Book } from "../types/Book";
 import ItemCard from "../components/ItemCard";
 import styles from "../styles/Items.module.css";
 
-export default class ClassItems extends React.PureComponent {
-  static contextType = ItemsContext;
-  declare context: React.ContextType<typeof ItemsContext>;
+interface Props {
+  items: Book[];
+}
+
+interface State {
+  search: string;
+}
+
+class ClassItems extends React.PureComponent<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      search: "",
+    };
+  }
+
+  handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ search: e.target.value });
+  };
 
   render() {
-    const { items } = this.context;
+    const { items } = this.props;
+    const { search } = this.state;
+
+    const filtered = items.filter(book =>
+      book.title.toLowerCase().includes(search.toLowerCase())
+    );
 
     return (
       <div>
         <h2>Books (Class Component)</h2>
 
+        <input
+          placeholder="Search..."
+          value={search}
+          onChange={this.handleSearch}
+        />
+
         <ul className={styles.list}>
-          {items.map((book: Book) => (
+          {filtered.map((book) => (
             <ItemCard key={book.id} book={book} />
           ))}
         </ul>
@@ -24,3 +52,9 @@ export default class ClassItems extends React.PureComponent {
     );
   }
 }
+
+const mapStateToProps = (state: RootState) => ({
+  items: state.items.items,
+});
+
+export default connect(mapStateToProps)(ClassItems);

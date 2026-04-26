@@ -1,10 +1,11 @@
 import { useParams } from "react-router-dom";
-import { useContext, useMemo } from "react";
-import { ItemsContext } from "../context/ItemsContext";
+import { useSelector } from "react-redux";
+import type { RootState } from "../store";
+import { useMemo } from "react";
 
 export default function ItemDetails() {
   const { id } = useParams();
-  const { items } = useContext(ItemsContext);
+  const items = useSelector((state: RootState) => state.items.items);
 
   const book = useMemo(() => {
     return items.find(b => b.id === Number(id));

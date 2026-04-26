@@ -1,9 +1,11 @@
-import { useState, useContext } from "react"
-import { ItemsContext } from "../context/ItemsContext"
+import { useState } from "react";
 import styles from "../styles/AddItem.module.css";
+import { useDispatch } from "react-redux";
+import { addItem } from "../store/itemsSlice";
+import type { AppDispatch } from "../store";
 
 export default function AddItem() {
-  const { addItem } = useContext(ItemsContext);
+  const dispatch = useDispatch<AppDispatch>();
 
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -13,13 +15,13 @@ export default function AddItem() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    addItem({
+    dispatch(addItem({
       id: Date.now(),
       title,
       author,
       genre,
       pages
-    });
+    }));
 
     setTitle("");
     setAuthor("");
