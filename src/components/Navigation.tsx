@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import styles from "../styles/Navigation.module.css";
 
 export default function Navigation() {
+  console.log("RENDER Navigation");
   return (
     <nav className={styles.navBar}>
       <Link to="/" className={styles.navLink}>Home</Link> 

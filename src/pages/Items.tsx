@@ -6,6 +6,7 @@ import type { RootState } from "../store";
 
 
 export default function Items() {
+  console.log("RENDER Items");
   const items = useSelector((state: RootState) => state.items.items);
   const [search, setSearch] = useState("");
 

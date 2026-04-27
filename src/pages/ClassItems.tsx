@@ -16,6 +16,7 @@ interface State {
 class ClassItems extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
+    console.log("RENDER ClassItem Constructor");
     this.state = {
       search: "",
     };
@@ -26,6 +27,7 @@ class ClassItems extends React.PureComponent<Props, State> {
   };
 
   render() {
+    console.log("RENDER ClassItems");
     const { items } = this.props;
     const { search } = this.state;
 

@@ -5,6 +5,7 @@ import { addItem } from "../store/itemsSlice";
 import type { AppDispatch } from "../store";
 
 export default function AddItem() {
+  console.log("RENDER AddItem");
   const dispatch = useDispatch<AppDispatch>();
 
   const [title, setTitle] = useState("");

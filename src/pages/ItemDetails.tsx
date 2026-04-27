@@ -5,6 +5,7 @@ import { useMemo } from "react";
 
 export default function ItemDetails() {
   const { id } = useParams();
+  console.log("RENDER ItemDetails: ", id);
   const items = useSelector((state: RootState) => state.items.items);
 
   const book = useMemo(() => {

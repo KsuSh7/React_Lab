@@ -11,6 +11,7 @@ interface Props {
 }
 
 function ItemCard({ book }: Props) {
+  console.log("RENDER ItemCard: ", book.id);
   const dispatch = useDispatch<AppDispatch>();
 
   const handleDelete = () => {
