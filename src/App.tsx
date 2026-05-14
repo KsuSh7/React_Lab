@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-
 import Navigation from "./components/Navigation"
 import Home from "./pages/Home"
 import Items from "./pages/Items"
@@ -8,6 +7,7 @@ import AddItem from "./pages/AddItem"
 import About from "./pages/About"
 import NotFound from "./pages/NotFound"
 import ClassItems from "./pages/ClassItems"
+import EditItem from "./pages/EditItem"
 import { Provider } from "react-redux";
 import { store } from "./store";
 
@@ -18,11 +18,14 @@ function App() {
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/items" element={<Items />} />
-          <Route path="/items/:id" element={<ItemDetails />} />
-          <Route path="/add" element={<AddItem />} />
-          <Route path="/class/items" element={<ClassItems />} />
           <Route path="/about" element={<About />} />
+
+          <Route path="/redux/items" element={<Items />} />
+          <Route path="/redux/items/:id" element={<ItemDetails />} />
+          <Route path="/redux/add" element={<AddItem />} />
+          <Route path="/redux/edit/:id" element={<EditItem />} />
+          <Route path="/redux/class/items" element={<ClassItems />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

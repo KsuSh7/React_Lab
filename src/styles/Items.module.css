@@ -28,6 +28,7 @@
 
 .deleteBtn {
   background: rgb(203, 179, 148);
+  margin-right: 5px;
   border: none;
   padding: 6px 10px;
   color: rgb(175, 16, 16);
@@ -38,4 +39,18 @@
 .deleteBtn:hover {
   background: #d93636;
   color: antiquewhite;
+}
+
+.editBtn {
+  background: rgb(203, 179, 148);
+  border: none;
+  padding: 6px 10px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.editBtn:hover {
+  background: antiquewhite;
+  color: black;
 }

@@ -21,9 +21,14 @@ const itemsSlice = createSlice({
     removeItem: (state, action: PayloadAction<number>) => {
       state.items = state.items.filter(item => item.id !== action.payload);
     },
+    editItem: (state, action: PayloadAction<Book>) => {
+      const index = state.items.findIndex(item => item.id === action.payload.id);
+      if (index !== -1) {
+        state.items[index] = action.payload;
+      }
+    },
   },
 });
 
-
-export const { addItem, removeItem } = itemsSlice.actions;
+export const { addItem, removeItem, editItem } = itemsSlice.actions;
 export default itemsSlice.reducer;

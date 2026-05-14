@@ -5,6 +5,7 @@ import styles from "../styles/Items.module.css";
 import { useDispatch } from "react-redux";
 import { removeItem } from "../store/itemsSlice";
 import type { AppDispatch } from "../store";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   book: Book;
@@ -13,6 +14,7 @@ interface Props {
 function ItemCard({ book }: Props) {
   console.log("RENDER ItemCard: ", book.id);
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
 
   const handleDelete = () => {
     dispatch(removeItem(book.id));
@@ -23,10 +25,13 @@ function ItemCard({ book }: Props) {
       <Link to={`/items/${book.id}`} className={styles.listItem}>
         {book.title} - {book.author}
       </Link>
-
-      <button className={styles.deleteBtn} onClick={handleDelete}>
+      <div>
+        <button className={styles.deleteBtn} onClick={handleDelete}>
         Delete
-      </button>
+        </button>
+        <button onClick={() => navigate(`/redux/edit/${book.id}`)} className={styles.editBtn}>Edit</button>
+      </div>
+      
     </li>
   );
 }
